@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/room_data_provider.dart';
 
 class Scoreboard extends StatelessWidget {
-  const Scoreboard({Key? key}) : super(key: key);
+  const Scoreboard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class Scoreboard extends StatelessWidget {
                 ),
               ),
               Text(
-                roomDataProvider.player.points.toInt().toString(),
+                roomDataProvider.player1.points.toInt().toString(),
                 style: const TextStyle(
                   fontSize: 20,
                   color: Colors.white,

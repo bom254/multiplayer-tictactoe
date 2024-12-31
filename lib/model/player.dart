@@ -3,7 +3,6 @@ class Player {
   final String socketID;
   final double points;
   final String playerType;
-
   Player({
     required this.nickname,
     required this.socketID,
@@ -24,7 +23,7 @@ class Player {
     return Player(
       nickname: map['nickname'] ?? '',
       socketID: map['socketID'] ?? '',
-      points: map['points'] ?.toDouble() ?? 0.0,
+      points: map['points']?.toDouble() ?? 0.0,
       playerType: map['playerType'] ?? '',
     );
   }

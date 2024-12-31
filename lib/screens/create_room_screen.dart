@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:multiplayer_tictactoe/widgets/custom_button.dart';
 
+import '../resources/socket_methods.dart';
+import '../responsive/responsive.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_textfiled.dart';
 

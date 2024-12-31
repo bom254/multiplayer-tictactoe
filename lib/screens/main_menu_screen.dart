@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:multiplayer_tictactoe/screens/create_room_screen.dart';
 import 'package:multiplayer_tictactoe/screens/join_room_screen.dart';
 
+import '../responsive/responsive.dart';
 import '../widgets/custom_button.dart';
 
 class MainMenuScreen extends StatelessWidget {

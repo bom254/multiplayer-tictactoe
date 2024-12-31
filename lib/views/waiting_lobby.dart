@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/room_data_provider.dart';
+import '../widgets/custom_textfiled.dart';
 
 class WaitingLobby extends StatefulWidget {
-  const WaitingLobby({super.key});
+  const WaitingLobby({Key? key}) : super(key: key);
 
   @override
   State<WaitingLobby> createState() => _WaitingLobbyState();
 }
 
 class _WaitingLobbyState extends State<WaitingLobby> {
+  late TextEditingController roomIdController;
+
   @override
   void initState() {
     super.initState();
     roomIdController = TextEditingController(
-      text: Provider.of<RoomDataProvider>(context, listen: false).roomData['_id'],
+      text:
+          Provider.of<RoomDataProvider>(context, listen: false).roomData['_id'],
     );
   }
 
@@ -31,7 +38,7 @@ class _WaitingLobbyState extends State<WaitingLobby> {
         const SizedBox(height: 20),
         CustomTextField(
           controller: roomIdController,
-          hint: '',
+          hintText: '',
           isReadOnly: true,
         ),
       ],

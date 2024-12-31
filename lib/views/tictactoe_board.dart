@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class TitactoeBoard extends StatefulWidget {
-  const TitactoeBoard({super.key});
+import '../provider/room_data_provider.dart';
+import '../resources/socket_methods.dart';
+
+class TicTacToeBoard extends StatefulWidget {
+  const TicTacToeBoard({Key? key}) : super(key: key);
 
   @override
-  State<TitactoeBoard> createState() => _TitactoeBoardState();
+  State<TicTacToeBoard> createState() => _TicTacToeBoardState();
 }
 
-class _TitactoeBoardState extends State<TitactoeBoard> {
+class _TicTacToeBoardState extends State<TicTacToeBoard> {
   final SocketMethods _socketMethods = SocketMethods();
+
   @override
   void initState() {
     super.initState();
@@ -34,10 +39,13 @@ class _TitactoeBoardState extends State<TitactoeBoard> {
         maxWidth: 500,
       ),
       child: AbsorbPointer(
-        absorbing: roomDataProvider.roomData['turn']['socketID'] != _socketMethods.socketClient.id,
+        absorbing: roomDataProvider.roomData['turn']['socketID'] !=
+            _socketMethods.socketClient.id,
         child: GridView.builder(
           itemCount: 9,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+          ),
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
               onTap: () => tapped(index, roomDataProvider),
@@ -53,18 +61,18 @@ class _TitactoeBoardState extends State<TitactoeBoard> {
                     child: Text(
                       roomDataProvider.displayElements[index],
                       style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 100,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 40,
-                            color: roomDataProvider.displayElements[index] == 'O'
-                              ? Colors.red
-                              : Colors.blue,
-                          ),
-                        ]
-                      ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 100,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 40,
+                              color:
+                                  roomDataProvider.displayElements[index] == 'O'
+                                      ? Colors.red
+                                      : Colors.blue,
+                            ),
+                          ]),
                     ),
                   ),
                 ),
